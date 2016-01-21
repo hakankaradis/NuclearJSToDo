@@ -1,6 +1,6 @@
 module.exports = {
   entry: [
-    './src/index.js'
+    './src/index.coffee'
   ],
   output: {
     path: __dirname,
@@ -8,13 +8,22 @@ module.exports = {
     filename: 'bundle.js'
   },
   module: {
-    loaders: [{
+    loaders: [
+    {
       exclude: /node_modules/,
       loader: 'babel'
+    },
+    { 
+      test: /\.coffee$/,
+      loaders: ["coffee",   "cjsx-loader"]
+    },
+    { 
+      test: /\.(coffee\.md|litcoffee)$/, 
+      loader: "coffee-loader?literate" 
     }]
   },
   resolve: {
-    extensions: ['', '.js', '.jsx']
+    extensions: ['', '.js', '.jsx', '.coffee']
   },
   devServer: {
     contentBase: './'
