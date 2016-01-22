@@ -1,44 +1,42 @@
 Item 								  = require './item'
 React 							  = require 'react'
-reactor							  = require '../reactor'
-Actions								= require '../flux/actions/actions'
-{ filteredTodoItems } = require '../flux/getters'
+immutable 						= require 'immutable'
 
+module.exports = class Todos extends React.Component
 
-module.exports = React.createClass
+	@propTypes =
+		changableText			: React.PropTypes.string
+		handleCheckBox    : React.PropTypes.func
+		handleCheckChange : React.PropTypes.func
+		handleDeleteClick : React.PropTypes.func
 
-	mixins: [reactor.ReactMixin]
-
-
-	getInitialState: ->
-		return { checkMe: 'Click To See Completed Tasks' }
-
-
-	getDataBindings: ->
-		return { items: filteredTodoItems }
+	@defaultProps = 
+		changableText     : 'Click to See Completed Tasks'
+		handleCheckBox    : -> console.log 'laaaan'
+		handleCheckChange : ->
+		handleDeleteClick : ->
 
 
 	renderList: ->
-		console.log 'render', @state.items.toJS(), @state.items, @state.items.hasOwnProperty('__root')
-		if @state.items.size>0
-		then @state.items.toList().map (item) -> 
-			console.log 'renderList ', item
-			<Item key={item.get 'id'} item={item} />
+
+		if @props.items.size > 0
+		then @props.items.toList().map (item) =>  # use => instead of -> to keep current this 
+			<Item 
+				key								= { item.get 'id' } 
+				item 			        = { item } 
+				handleDeleteClick = { @props.handleDeleteClick }
+				handleCheckChange = { @props.handleCheckChange } />
 		else 
-			  <h4> Add a todo to get start! </h4>
-
-
-	handleCheckBox: (event) ->
-		if event.target.checked 
-		then this.setState({ checkMe: 'Click To See AllTasks' }) 
-		else this.setState({ checkMe: 'Click To See Completed Tasks' })		
-		Actions.setFilter event.target.checked
+			<h4> Add a todo to get start! </h4>
 
 
 	render: ->
-		console.log 'todos component ', @state.items.toJS()
+		
 		<div> 
 			{this.renderList()} 	
-			<span> {@state.checkMe} </span>
-			<input type="checkbox" onChange={@handleCheckBox} />
+			<span > { @props.changableText } </span>
+			<input
+				ref			 = 'filterCheckBox' 
+				type     = 'checkbox'
+				onChange = { @props.handleCheckBox } />
 		</div>

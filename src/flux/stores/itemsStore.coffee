@@ -1,4 +1,4 @@
-Nuclear = require 'nuclear-js'
+Nuclear     = require 'nuclear-js'
 toImmutable = Nuclear.toImmutable
 
 
@@ -25,4 +25,4 @@ module.exports = class itemsStore extends Nuclear.Store
 
 	addItem: (state, {item}) ->
 		console.log 'item store action'
-		return state.set item.get('id'), toImmutable item  # because item is immutable
+		return state.set item.get('id'), toImmutable(item)  # because item is immutable

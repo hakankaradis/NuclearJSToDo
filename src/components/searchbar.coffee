@@ -1,29 +1,37 @@
 React           = require 'react'
-Actions         = require '../flux/actions/actions'
-{ toImmutable } = require 'nuclear-js'
 
 module.exports = class SearchBar extends React.Component
 
-  constructor: (props) ->
-    super props
-
-    @state = { text : '' }
-
-
-  handleInputChange: (event) ->
-    @setState { text: event.target.value }
+  @propsTypes = 
+    query             : React.PropTypes.string
+    handleAddClick    : React.PropTypes.func
+    handleInputChange : React.PropTypes.func
 
 
-  handleClick: -> 
-    console.log @state.text
-    Actions.addItem toImmutable {text: @state.text, id: Date.now(), done: false}
-	
+  @defaultProps = 
+    query             : ''
+    handleAddClick    : ->
+    handleInputChange : ->
+
 
   render: ->
-    <div className="input-group"> 
-      <input type="text" className="form-control" onChange={@handleInputChange.bind(this)}/>
-      <span className="input-group-btn">
-        <button type="button" className="btn btn-default" onClick={@handleClick.bind(this)}> Add 
+
+    <div className  = 'input-group'> 
+      <input 
+        type        = 'text'
+        className   = 'form-control' 
+        placeholder = 'Search'
+        ref         = 'TodoListInput'
+        value       = { @props.query }
+        onChange    = { @props.handleInputChange }/>
+      
+      <span className = 'input-group-btn'>
+        <button 
+          type      = 'button'
+          className = 'btn btn-default'
+          ref       = 'AddTodoButton'
+          onClick   = { @props.handleAddClick }> 
+            Add 
         </button>
       </span>
     </div>

@@ -1,10 +1,12 @@
-reactor 	  = require '../reactor'
+reactor 	  	= require '../reactor'
+itemsStore      = require './stores/itemsStore'
+queryStore      = require './stores/queryStore'
 typeFilterStore = require './stores/typeFilterStore'
-itemsStore = require './stores/itemsStore'
 
 reactor.registerStores
-	typeFilterStore: new typeFilterStore
-	itemsStore:  new itemsStore
+	typeFilterStore : new typeFilterStore
+	itemsStore      : new itemsStore
+	queryStore      : new queryStore
 
 
 module.exports = 

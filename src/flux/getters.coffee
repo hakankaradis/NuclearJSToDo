@@ -1,3 +1,7 @@
+exports.query = ['queryStore']
+
+exports.checked = ['checkedStore']
+
 exports.filteredTodoItems = [
 	['typeFilterStore']
 	['itemsStore']

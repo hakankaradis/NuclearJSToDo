@@ -1,9 +1,9 @@
-App      = require './components/app'
+App      = require './components'
 React    = require 'react'
 ReactDOM = require 'react-dom'
 Flux 	 = require './flux'
 
 
 ReactDOM.render(
-  <App />, document.querySelector('.container')
+  <App.Container />, document.querySelector('.container')
 )

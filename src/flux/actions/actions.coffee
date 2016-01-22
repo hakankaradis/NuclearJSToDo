@@ -15,3 +15,7 @@ exports.updateItem = (item) ->
 
 exports.deleteItem = (item) ->
 	reactor.dispatch 'DELETE_ITEM', { item }
+
+
+exports.changeQuery = (query) ->
+	reactor.dispatch 'CHANGE_QUERY', query
