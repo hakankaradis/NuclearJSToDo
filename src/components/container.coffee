@@ -52,9 +52,9 @@ module.exports = React.createClass
 	render: ->
 
 		<View 
-			items     				= { @state.items }
-			query 						= { @state.query }
-			changeableText		= { @state.changeableText }
+			items             = { @state.items }
+			query             = { @state.query }
+			changeableText    = { @state.changeableText }
 			handleCheckBox    = { @handleCheckBox }
 			handleAddClick    = { @handleAddClick }
 			handleDeleteClick = { @handleDeleteClick }
