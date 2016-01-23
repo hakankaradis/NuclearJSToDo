@@ -32,7 +32,6 @@ module.exports = React.createClass
 	handleInputChange: (event) ->
 
 		{ value } = event.target
-		console.log 'value', value
 		@setState({ query : value })
 		Actions.changeQuery value
 
