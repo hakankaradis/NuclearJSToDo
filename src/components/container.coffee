@@ -1,8 +1,8 @@
-View    				= require './view'
-React   				= require 'react'
-Actions 				= require '../flux/actions/actions'
-reactor				  = require '../reactor'
-getters 				= require '../flux/getters'
+View            = require './view'
+React           = require 'react'
+Actions         = require '../flux/actions/actions'
+reactor         = require '../reactor'
+getters         = require '../flux/getters'
 { toImmutable } = require 'nuclear-js'
 
 

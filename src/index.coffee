@@ -1,7 +1,7 @@
 App      = require './components'
 React    = require 'react'
 ReactDOM = require 'react-dom'
-Flux 	 = require './flux'
+Flux     = require './flux'
 
 
 ReactDOM.render(

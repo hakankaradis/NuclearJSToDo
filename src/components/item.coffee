@@ -28,14 +28,14 @@ module.exports = class Item extends React.Component
 		<div className = 'input-group row'> 
 			<span className = 'input-group-addon'>
 				<input 
-					type     = 'checkbox'  
-					onChange = { @handleCheckChange.bind this } />
+				  type     = 'checkbox'  
+				  onChange = { @handleCheckChange.bind this } />
 			</span>
 			<div className = 'form-control'> {@props.item.get 'text'} </div> 
 			<button 
-				type      = 'button'
-				onClick   = { @handleDeleteClick.bind this }
-				className = 'btn btn-default'> 
-					Delete 
+			  type      = 'button'
+			  onClick   = { @handleDeleteClick.bind this }
+			  className = 'btn btn-default'> 
+			    Delete 
 			</button>
 		</div>

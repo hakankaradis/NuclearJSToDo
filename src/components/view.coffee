@@ -6,8 +6,8 @@ immutable = require 'immutable'  # npm it
 module.exports = class View extends React.Component
 
 	@propTypes = 
-		query			  			: React.PropTypes.string
-		changableText			: React.PropTypes.string
+		query             : React.PropTypes.string
+		changableText     : React.PropTypes.string
 		handleCheckBox    : React.PropTypes.func
 		handleAddClick    : React.PropTypes.func
 		handleCheckChange : React.PropTypes.func
@@ -17,7 +17,7 @@ module.exports = class View extends React.Component
 
 	@defaultProps = 
 		query             : ''
-		checked 					: false
+		checked           : false
 		changableText     : 'Click to See Completed Tasks'
 		handleCheckBox    : ->
 		handleAddClick    : ->
@@ -30,7 +30,7 @@ module.exports = class View extends React.Component
 
 		<Todos 
 			items             = { @props.items } 
-			changableText			=	{ @props.changableText }
+			changableText     =	{ @props.changableText }
 			handleCheckBox    = { @props.handleCheckBox } 
 			handleCheckChange = { @props.handleCheckChange } 
 			handleDeleteClick = { @props.handleDeleteClick }/>
@@ -39,9 +39,9 @@ module.exports = class View extends React.Component
 	renderSearchBar: ->
 
 		<SearchBar 
-			query             = { @props.query }
-			handleAddClick    = { @props.handleAddClick } 
-			handleInputChange = { @props.handleInputChange } 
+		  query             = { @props.query }
+		  handleAddClick    = { @props.handleAddClick } 
+		  handleInputChange = { @props.handleInputChange } 
 			/>
 
 

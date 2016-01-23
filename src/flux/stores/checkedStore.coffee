@@ -14,7 +14,7 @@ module.exports = class checkedStore extends Nuclear.Store
 
 
 	changeFilter: (state, type) -> 
-		switch type
-			when true
-			then 'Click To See All Tasks'
-			else 'Click To See Completed Tasks'
+	  switch type
+	    when true
+	    then 'Click To See All Tasks'
+	    else 'Click To See Completed Tasks'

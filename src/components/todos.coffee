@@ -1,6 +1,6 @@
-Item 								  = require './item'
-React 							  = require 'react'
-immutable 						= require 'immutable'
+Item                  = require './item'
+React                 = require 'react'
+immutable             = require 'immutable'
 
 module.exports = class Todos extends React.Component
 
@@ -22,10 +22,10 @@ module.exports = class Todos extends React.Component
 		if @props.items.size > 0
 		then @props.items.toList().map (item) =>  # use => instead of -> to keep current this 
 			<Item 
-				key								= { item.get 'id' } 
-				item 			        = { item } 
-				handleDeleteClick = { @props.handleDeleteClick }
-				handleCheckChange = { @props.handleCheckChange } />
+			  key               = { item.get 'id' } 
+			  item              = { item } 
+			  handleDeleteClick = { @props.handleDeleteClick }
+			  handleCheckChange = { @props.handleCheckChange } />
 		else 
 			<h4> Add a todo to get start! </h4>
 
@@ -36,7 +36,7 @@ module.exports = class Todos extends React.Component
 			{this.renderList()} 	
 			<span > { @props.changableText } </span>
 			<input
-				ref			 = 'filterCheckBox' 
-				type     = 'checkbox'
-				onChange = { @props.handleCheckBox } />
+			  ref      = 'filterCheckBox' 
+			  type     = 'checkbox'
+			  onChange = { @props.handleCheckBox } />
 		</div>
