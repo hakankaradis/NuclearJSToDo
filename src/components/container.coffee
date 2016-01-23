@@ -39,7 +39,6 @@ module.exports = React.createClass
 
 	handleAddClick: -> 
 
-		console.log 'state query', @state.query
 		options = toImmutable {text: @state.query, id: Date.now(), done: false}
 		Actions.addItem options
  

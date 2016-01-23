@@ -25,13 +25,13 @@ module.exports = class Item extends React.Component
 
 	render: ->
 
-		<div className='input-group row'> 
-			<span className='input-group-addon'>
+		<div className = 'input-group row'> 
+			<span className = 'input-group-addon'>
 				<input 
 					type     = 'checkbox'  
 					onChange = { @handleCheckChange.bind this } />
 			</span>
-			<div className='form-control'> {@props.item.get 'text'} </div> 
+			<div className = 'form-control'> {@props.item.get 'text'} </div> 
 			<button 
 				type      = 'button'
 				onClick   = { @handleDeleteClick.bind this }
