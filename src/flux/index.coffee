@@ -9,6 +9,6 @@ reactor.registerStores
 	queryStore      : new queryStore
 
 
-module.exports = 
+module.exports =
 	actions: require './actions/actions'
 	getters: require './getters'

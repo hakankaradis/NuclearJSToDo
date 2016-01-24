@@ -5,13 +5,9 @@ TestUtils = require 'react-addons-test-utils'
 ShallowTestUtils = require 'react-shallow-testutils';
 
 describe 'View Test', ->
-
 	{ renderIntoDocument } = TestUtils
-
 	describe '::render', ->
-
 		it 'checks rendere modal props type', ->
-
 			# modal = renderIntoDocument(<View />)
 
 			renderer = TestUtils.createRenderer()

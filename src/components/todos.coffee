@@ -1,6 +1,6 @@
-Item                  = require './item'
-React                 = require 'react'
-immutable             = require 'immutable'
+Item 		= require './item'
+React 		= require 'react'
+immutable  = require 'immutable'
 
 module.exports = class Todos extends React.Component
 
@@ -10,7 +10,7 @@ module.exports = class Todos extends React.Component
 		handleCheckChange : React.PropTypes.func
 		handleDeleteClick : React.PropTypes.func
 
-	@defaultProps = 
+	@defaultProps =
 		changableText     : 'Click to See Completed Tasks'
 		handleCheckBox    : -> console.log 'laaaan'
 		handleCheckChange : ->
@@ -20,23 +20,23 @@ module.exports = class Todos extends React.Component
 	renderList: ->
 
 		if @props.items.size > 0
-		then @props.items.toList().map (item) =>  # use => instead of -> to keep current this 
-			<Item 
-			  key               = { item.get 'id' } 
-			  item              = { item } 
-			  handleDeleteClick = { @props.handleDeleteClick }
+		then @props.items.toList().map (item) =>  # use => instead of -> to keep current this
+			<Item
+			  key  					= { item.get 'id' }
+			  item 					= { item }
+			  handleDeleteClick  	= { @props.handleDeleteClick }
 			  handleCheckChange = { @props.handleCheckChange } />
-		else 
+		else
 			<h4> Add a todo to get start! </h4>
 
 
 	render: ->
-		
-		<div> 
-			{this.renderList()} 	
+
+		<div>
+			{this.renderList()}
 			<span > { @props.changableText } </span>
 			<input
-			  ref      = 'filterCheckBox' 
-			  type     = 'checkbox'
-			  onChange = { @props.handleCheckBox } />
+				ref 		 = 'filterCheckBox'
+				type 		 = 'checkbox'
+				onChange = { @props.handleCheckBox } />
 		</div>

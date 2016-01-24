@@ -36,27 +36,27 @@ module.exports = React.createClass
 		Actions.changeQuery value
 
 
-	handleAddClick: -> 
+	handleAddClick: ->
 
 		options = toImmutable {text: @state.query, id: Date.now(), done: false}
 		Actions.addItem options
- 
+
 
 	handleCheckBox: (event) ->
 
 		{ checked } = event.target
-		Actions.setFilter checked 
+		Actions.setFilter checked
 
 
 	render: ->
 
-		<View 
-			items             = { @state.items }
-			query             = { @state.query }
-			changeableText    = { @state.changeableText }
-			handleCheckBox    = { @handleCheckBox }
-			handleAddClick    = { @handleAddClick }
-			handleDeleteClick = { @handleDeleteClick }
-			handleInputChange = { @handleInputChange }
+		<View
+			items                      = { @state.items }
+			query                      = { @state.query }
+			changeableText       = { @state.changeableText }
+			handleCheckBox      = { @handleCheckBox }
+			handleAddClick 	   = { @handleAddClick }
+			handleDeleteClick	   = { @handleDeleteClick }
+			handleInputChange   = { @handleInputChange }
 			handleCheckChange = { @handleCheckChange }
-			/> 
+			/>

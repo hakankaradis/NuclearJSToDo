@@ -1,11 +1,11 @@
-React     = require 'react'
-Todos     = require './todos'
+React 		= require 'react'
+Todos 		= require './todos'
 SearchBar = require './searchbar'
-immutable = require 'immutable'  # npm it
+immutable = require 'immutable'	# npm it
 
 module.exports = class View extends React.Component
 
-	@propTypes = 
+	@propTypes =
 		query             : React.PropTypes.string
 		changableText     : React.PropTypes.string
 		handleCheckBox    : React.PropTypes.func
@@ -13,9 +13,9 @@ module.exports = class View extends React.Component
 		handleCheckChange : React.PropTypes.func
 		handleDeleteClick : React.PropTypes.func
 		handleInputChange : React.PropTypes.func
-		
 
-	@defaultProps = 
+
+	@defaultProps =
 		query             : ''
 		checked           : false
 		changableText     : 'Click to See Completed Tasks'
@@ -24,33 +24,32 @@ module.exports = class View extends React.Component
 		handleDeleteClick : ->
 		handleInputChange : ->
 		handleCheckChange : ->
-		
-	
+
+
 	renderTodos: ->
 
-		<Todos 
-			items             = { @props.items } 
+		<Todos
+			items             = { @props.items }
 			changableText     =	{ @props.changableText }
-			handleCheckBox    = { @props.handleCheckBox } 
-			handleCheckChange = { @props.handleCheckChange } 
+			handleCheckBox    = { @props.handleCheckBox }
+			handleCheckChange = { @props.handleCheckChange }
 			handleDeleteClick = { @props.handleDeleteClick }/>
 
 
 	renderSearchBar: ->
 
-		<SearchBar 
+		<SearchBar
 		  query             = { @props.query }
-		  handleAddClick    = { @props.handleAddClick } 
-		  handleInputChange = { @props.handleInputChange } 
+		  handleAddClick    = { @props.handleAddClick }
+		  handleInputChange = { @props.handleInputChange }
 			/>
 
 
 	render: ->
-		
 		<div className  = 'row panel panel-default'>
-      <h2 className = 'text-center'>
-        To-Do List
-      </h2>
-      { @renderSearchBar() }
-      { @renderTodos() }
-    </div>
+			<h2 className = 'text-center'>
+				To-Do List
+			</h2>
+			{ @renderSearchBar() }
+			{ @renderTodos() }
+		 </div>
