@@ -1,8 +1,6 @@
-App		= require './components'
-Flux 		= require './flux'
-React        = require 'react'
+App      = require './components/tabstoriesonsidebar'
+React    = require 'react'
 ReactDOM = require 'react-dom'
-
 
 
 ReactDOM.render(
