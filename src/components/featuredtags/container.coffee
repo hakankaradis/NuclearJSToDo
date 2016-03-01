@@ -2,7 +2,7 @@ View  = require './view'
 React = require 'react'
 
 
-module.exports = React.createClass
+module.exports = class FeaturedTags extends React.Component
 
   render: ->
 

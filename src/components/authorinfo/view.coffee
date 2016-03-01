@@ -6,7 +6,9 @@ module.exports = class View extends React.Component
   render: ->
     <div>
       <ProfilPic />
-      <div className='author'>Author </div>
-      <div className='updatetime'>updated time</div>
-      <div className='readtime'>readtime</div>
+      <div className="postMetaInline-feedSummary">
+        <a className="link link link--darken link--accent" >
+          Hakan Karadiş
+        </a>
+      </div>
     </div>

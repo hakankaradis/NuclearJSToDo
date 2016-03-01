@@ -2,7 +2,7 @@ View  = require './view'
 React = require 'react'
 
 
-module.exports = React.createClass
+module.exports = class TopStories extends React.Component
 
   render: ->
 

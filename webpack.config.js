@@ -13,13 +13,16 @@ module.exports = {
       exclude: /node_modules/,
       loader: 'babel'
     },
-    { 
+    {
       test: /\.coffee$/,
       loaders: ["coffee",   "cjsx-loader"]
     },
-    { 
-      test: /\.(coffee\.md|litcoffee)$/, 
-      loader: "coffee-loader?literate" 
+    {
+      test: /\.css$/, loader: "style-loader!css-loader"
+    },
+    {
+      test: /\.(coffee\.md|litcoffee)$/,
+      loader: "coffee-loader?literate"
     }]
   },
   resolve: {

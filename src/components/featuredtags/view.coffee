@@ -5,7 +5,7 @@ SideBarHeader = require '../sidebarheader'
 module.exports = class View extends React.Component
 
   renderHeader: ->
-    <SideBarHeader />
+    <SideBarHeader.Container />
 
 
   renderTags: ->
@@ -13,7 +13,7 @@ module.exports = class View extends React.Component
 
 
   render: ->
-    <div>
+    <div className='app'>
       {@renderHeader()}
       {@renderTags()}
     </div>

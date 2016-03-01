@@ -1,8 +1,7 @@
-View            = require './view'
-React           = require 'react'
+View  = require './view'
+React = require 'react'
 
-
-module.exports = React.createClass
+module.exports = class Tag extends React.Component
 
   render: ->
 

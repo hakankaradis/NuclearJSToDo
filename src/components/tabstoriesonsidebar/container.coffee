@@ -2,7 +2,7 @@ View  = require './view'
 React = require 'react'
 
 
-module.exports = React.createClass
+module.exports = class TabStoriesOnSideBar extends React.Component
 
   render: ->
 

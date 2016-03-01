@@ -2,7 +2,9 @@ React     = require 'react'
 
 module.exports = class View extends React.Component
 
+
+
   render: ->
-    <div>
-      <h5 className="ui header">Fifth header</h5>
+    <div className='sidebarheader'>
+      <h5 className='header'>{@props.title}</h5>
     </div>

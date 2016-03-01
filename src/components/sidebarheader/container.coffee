@@ -2,8 +2,16 @@ View  = require './view'
 React = require 'react'
 
 
-module.exports = React.createClass
+module.exports = class SideBarHeader extends React.Component
+
+  @propTypes =
+    title : React.PropTypes.string
+
+  @defaultProps =
+    title : 'Fifth header'
+
+
 
   render: ->
 
-    <View />
+    <View title = {@props.title}/>
