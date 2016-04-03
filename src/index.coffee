@@ -1,4 +1,4 @@
-App      = require './components'
+App      = require './components/newstory'
 Flux     = require './flux'
 reactor  = require './reactor'
 React    = require 'react'

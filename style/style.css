@@ -66,3 +66,13 @@
   margin-right: 8px;
   margin-bottom: 8px;
 }
+.editor {
+  border: 1px solid #f0f0f0;
+  cursor: text;
+  height: 80;
+  padding: 10;
+}
+.link {
+  color: #3b5998;
+  textDecoration: underline;
+}
