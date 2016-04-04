@@ -35,15 +35,31 @@ module.exports = class View extends React.Component
       <h3> { @props.title } </h3>
       <AuthorInfo />
       <Title.Container reactor = { reactor }/>
+
+      <div style={{marginBottom: 10}}>
+        Here are some local examples that can be entered as a URL:
+        <ul>
+          <li>media.mp3</li>
+          <li>media.png</li>
+          <li>media.mp4</li>
+        </ul>
+      </div>
+
       <div style = { @props.styles.buttons }>
-        <button
-          style       = {{ marginRight: 10 }}
-          onMouseDown = { @props.promptForLink } >
+        <button onMouseDown={@props.promptForLink} style={{marginRight: 10}} >
           Add Link
         </button>
-        <button onMouseDown = { @props.removeLink }>
+        <button onMouseDown={@props.removeLink} style={{marginRight: 10}}>
           Remove Link
         </button>
+
+        <button onMouseDown={@props.addImage} style={{marginRight: 10}}>
+          Add Image
+        </button>
+        <button onMouseDown={@props.addVideo} style={{marginRight: 10}}>
+          Add Video
+        </button>
+
       </div>
       { @renderURLInput() }
 
@@ -51,8 +67,11 @@ module.exports = class View extends React.Component
         <Editor
           ref              = 'editor'
           onChange         = { @props.editorOnChange }
+          spellCheck       = { yes }
           editorState      = { @props.editorState }
           placeholder      = 'Enter some text...'
+          blockStyleFn     = { @props.myBlockStyleFn }
+          blockRendererFn  = { @props.mediaBlockRenderer }
           handleKeyCommand = { @props.handleKeyCommand }
           />
       </div>

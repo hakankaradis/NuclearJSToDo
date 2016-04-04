@@ -3,21 +3,24 @@ View            = require './view'
 React           = require 'react'
 Actions         = require '../../flux/actions'
 getters         = require '../../flux/getters'
-{ connect }     = require 'nuclear-js-react-addons';
+{ connect }     = require 'nuclear-js-react-addons'
 
-{ EditorState, RichUtils, CompositeDecorator, Entity, convertToRaw } = require 'draft-js'
+{ EditorState, RichUtils, MediaUtils, CompositeDecorator, Entity, convertToRaw } = require 'draft-js'
 
 
 module.exports = class NewStory extends React.Component
-
+  HASHTAG_REGEX = /\#[\w\u0590-\u05ff]+/g
   constructor: (props) ->
 
     super props
 
-    option = [{
+    option = [
       strategy  : @findLinkEntities
       component : @Link
-    }]
+    ,
+      strategy  : @hashTagEntities
+      component : @HashTag
+    ]
 
     decorator = new CompositeDecorator option
 
@@ -26,6 +29,7 @@ module.exports = class NewStory extends React.Component
       showURLInput : false
       urlValue     : ''
 
+  onChange = (editorState) -> @setState { editorState }
 
   publishHandler: ->
     # read from getter and get state make them json object and console them
@@ -52,6 +56,23 @@ module.exports = class NewStory extends React.Component
       </a>
     )
 
+
+  HashTag: (props) ->
+    console.log 'props'
+    return (
+      <span {...props} style={Styl.hashtag}>{props.children}</span>
+    )
+
+  hashTagEntities: (contentBlock, callback) ->
+
+    findWithRegex HASHTAG_REGEX, contentBlock, callback
+
+  findWithRegex = (regex, contentBlock, callback) ->
+    text = contentBlock.getText()
+
+    while (matchArr = regex.exec text) isnt null
+      start = matchArr.index
+      callback start, start + matchArr[0].length
 
   editorOnChange: (editorState) ->
     @setState { editorState }
@@ -115,6 +136,57 @@ module.exports = class NewStory extends React.Component
         editorState : RichUtils.toggleLink editorState, selection, null
 
 
+  myBlockStyleFn: (contentBlock) ->
+    type = contentBlock.getType()
+    console.log 'type', type
+    if type is 'blockquote'
+      return 'superFancyBlockquote'
+
+
+  addMedia: (type) ->
+    src = window.prompt 'Enter a URL'
+    return  unless src
+
+    entityKey = Entity.create type, 'IMMUTABLE', {src}
+
+    return MediaUtils.insertMedia @state.editorState, entityKey, ' '
+
+
+  addImage: () ->
+    @onChange @addMedia 'image'
+
+  addVideo: () ->
+    @onChange @addMedia 'video'
+
+  mediaBlockRenderer: (contentBlock) ->
+    if contentBlock.getType() is 'media'
+      return { component: @Media, editable: false }
+
+
+  Image = (props) ->
+    return <img src={props.src} style={Styl.media} />
+
+
+  Video = (props) ->
+    return <video controls src={props.src} style={Styl.media} />
+
+
+  Media: (props) ->
+    entity = Entity.get(props.block.getEntityAt(0))
+    {src} = entity.getData()
+    type = entity.getType()
+
+    if (type is 'image')
+      media = <Image src={src} />
+    else if (type is 'video')
+      media = <Video src={src} />
+
+
+    return media
+
+
+
+
   render: ->
 
     <View
@@ -135,10 +207,14 @@ module.exports = class NewStory extends React.Component
       promptForLink      = { @promptForLink.bind this }
       removeLink         = { @removeLink.bind this }
       focus              = { @focus.bind this }
-
+      myBlockStyleFn     = { @myBlockStyleFn.bind this }
       logState           = { @logState.bind this }
 
-      styles             = { Styl} />
+      addImage           = { @addImage.bind this }
+      addVideo           = { @addVideo.bind this }
+      mediaBlockRenderer = { @mediaBlockRenderer.bind this }
+
+      styles             = { Styl } />
 
 mapStateToProps = (props) ->
 
